@@ -4,15 +4,14 @@ function onSubmit(e) {
     document.querySelector('.msg').textContent = '';
     document.querySelector('#image').src ='';
     const prompt = document.querySelector('#prompt').value;
-    const size = document.querySelector('#size').value;
 
     if(prompt === ''){
        alert('Please enter some text');
        return;
     }
-    generateImageRequest(prompt,size);
+    generateImageRequest(prompt);
 }
-async function generateImageRequest(prompt,size){
+async function generateImageRequest(prompt){
      try {
         showSpinner();
 
@@ -22,8 +21,7 @@ async function generateImageRequest(prompt,size){
                 'Content-Type' : 'application/json'
             },
             body : JSON.stringify({
-                 prompt,
-                 size
+                 prompt
             })
         })
         if(!response.ok){
